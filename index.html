@@ -28,32 +28,36 @@
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
+    /* Yläotsikko */
     .fc-toolbar-title {
-      color: #FFD700;
+      color: #FFD700 !important;
       font-size: 1.8em;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
+    /* Napit */
     .fc-button {
-      background-color: #FFD700;
-      border: none;
-      color: #000000;
+      background-color: #FFD700 !important;
+      border: none !important;
+      color: #000000 !important;
       font-weight: bold;
       text-transform: uppercase;
     }
 
     .fc-button:hover {
-      background-color: #ffcc00;
+      background-color: #ffcc00 !important;
     }
 
+    /* Päivien otsikot */
     .fc-col-header-cell-cushion,
     .fc-daygrid-day-number {
-      color: #FFD700;
+      color: #FFD700 !important;
       font-weight: bold;
     }
 
+    /* Tapahtumien laatikot */
     .fc-event {
       background-color: #1a1a1a !important;
       border: 1px solid #FFD700 !important;
@@ -64,20 +68,22 @@
       padding: 4px;
     }
 
-    .fc-scrollgrid {
-      background-color: #0d0d0d;
+    /* 🔥 KAIKKI TEKSTIT KELTAISEKSI KAIKISSA NÄKYMISSÄ */
+    .fc-event-title,
+    .fc-event-time,
+    .fc-event-main,
+    .fc-timegrid-slot-label,
+    .fc-timegrid-axis-cushion,
+    .fc-daygrid-event,
+    .fc-daygrid-event-dot {
+      color: #FFD700 !important;
+      border-color: #FFD700 !important;
     }
 
-    /* 🔥 KAIKKI TEKSTIT KELTAISEKSI KAIKISSA NÄKYMISSÄ */
-    .fc-timegrid-event .fc-event-main,
-    .fc-timegrid-event .fc-event-time,
-    .fc-timegrid-event .fc-event-title,
-    .fc-daygrid-event .fc-event-main,
-    .fc-daygrid-event .fc-event-time,
-    .fc-daygrid-event .fc-event-title,
-    .fc-timegrid-slot-label,
-    .fc-timegrid-axis-cushion {
+    /* Poistetaan FullCalendarin oletuslinkkityyli */
+    .fc-event a {
       color: #FFD700 !important;
+      text-decoration: none !important;
     }
   </style>
 </head>
@@ -107,6 +113,7 @@
           googleCalendarId: 'pitsapaku@gmail.com'
         },
 
+        /* 🔥 Näytetään vain aika + paikka */
         eventContent: function(arg) {
           let start = arg.event.start;
           let end = arg.event.end;
@@ -123,14 +130,18 @@
           };
         },
 
+        /* 🔥 Estetään klikkaus */
         eventClick: function(info) {
           info.jsEvent.preventDefault();
+          return false;
         },
 
+        /* 🔥 Poistetaan linkki DOM:ista kaikissa näkymissä */
         eventDidMount: function(info) {
-          if (info.el.tagName === 'A') {
-            info.el.removeAttribute('href');
-            info.el.style.cursor = 'default';
+          let a = info.el.querySelector('a');
+          if (a) {
+            a.removeAttribute('href');
+            a.style.cursor = 'default';
           }
         }
       });
