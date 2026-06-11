@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <title>Pitsapaku kalenteri</title>
 
-  <!-- FullCalendar 5.11.3 -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/fi.js"></script>
@@ -50,9 +49,7 @@
     }
 
     .fc-col-header-cell-cushion,
-    .fc-daygrid-day-number,
-    .fc-timegrid-slot-label,
-    .fc-timegrid-axis-cushion {
+    .fc-daygrid-day-number {
       color: #FFD700;
       font-weight: bold;
     }
@@ -69,6 +66,18 @@
 
     .fc-scrollgrid {
       background-color: #0d0d0d;
+    }
+
+    /* 🔥 KAIKKI TEKSTIT KELTAISEKSI KAIKISSA NÄKYMISSÄ */
+    .fc-timegrid-event .fc-event-main,
+    .fc-timegrid-event .fc-event-time,
+    .fc-timegrid-event .fc-event-title,
+    .fc-daygrid-event .fc-event-main,
+    .fc-daygrid-event .fc-event-time,
+    .fc-daygrid-event .fc-event-title,
+    .fc-timegrid-slot-label,
+    .fc-timegrid-axis-cushion {
+      color: #FFD700 !important;
     }
   </style>
 </head>
@@ -93,15 +102,11 @@
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
 
-        // 🔑 Google API -avain
         googleCalendarApiKey: 'AIzaSyBH2DFW42Im8sKn0ibX-szlr6Hh4FriVF8',
-
-        // 📅 Google-kalenterin ID
         events: {
           googleCalendarId: 'pitsapaku@gmail.com'
         },
 
-        // Näytetään vain kellonaika + paikka
         eventContent: function(arg) {
           let start = arg.event.start;
           let end = arg.event.end;
@@ -118,12 +123,10 @@
           };
         },
 
-        // Estetään klikkaus kaikissa näkymissä
         eventClick: function(info) {
           info.jsEvent.preventDefault();
         },
 
-        // Poistetaan href-linkki kuukausi- ja muista näkymistä
         eventDidMount: function(info) {
           if (info.el.tagName === 'A') {
             info.el.removeAttribute('href');
