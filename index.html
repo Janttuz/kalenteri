@@ -28,16 +28,18 @@
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
-    /* Otsikko */
+    /* 🔥 Napolin kultainen tyyli + musta teksti valikoissa */
     .fc-toolbar-title {
-      color: #FFD700 !important;
+      color: #000000 !important;
       font-size: 1.8em;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
+      background-color: #FFD700;
+      padding: 5px 10px;
+      border-radius: 6px;
     }
 
-    /* Napit */
     .fc-button {
       background-color: #FFD700 !important;
       border: none !important;
@@ -47,17 +49,24 @@
     }
 
     .fc-button:hover {
-      background-color: #ffcc00 !important;
+      background-color: #e6c200 !important;
+      color: #000000 !important;
     }
 
-    /* Päivien otsikot */
-    .fc-col-header-cell-cushion,
-    .fc-daygrid-day-number {
-      color: #FFD700 !important;
+    /* Päivien otsikot kultaisella taustalla ja mustalla tekstillä */
+    .fc-col-header-cell {
+      background-color: #FFD700 !important;
+      color: #000000 !important;
       font-weight: bold;
     }
 
-    /* Tapahtumalaatikot */
+    .fc-col-header-cell-cushion,
+    .fc-daygrid-day-number {
+      color: #000000 !important;
+      font-weight: bold;
+    }
+
+    /* Tapahtumalaatikot kultaisella tekstillä mustalla taustalla */
     .fc-event {
       background-color: #1a1a1a !important;
       border: 1px solid #FFD700 !important;
@@ -68,24 +77,21 @@
       padding: 4px;
     }
 
-    /* 🔥 PAKOTETAAN KAIKKI TEKSTIT JA RAJAT KULTAISEKSI */
+    /* 🔥 Pakotetaan kultainen teksti tapahtumiin */
     .fc-event,
     .fc-event *,
     .fc-daygrid-event,
     .fc-daygrid-event *,
     .fc-timegrid-event,
-    .fc-timegrid-event *,
-    .fc-timegrid-slot-label,
-    .fc-timegrid-axis-cushion,
-    .fc-col-header-cell-cushion,
-    .fc-daygrid-day-number,
-    .fc-toolbar-title,
-    .fc-button,
-    .fc-button *,
-    .fc-scrollgrid,
-    .fc-scrollgrid * {
+    .fc-timegrid-event * {
       color: #FFD700 !important;
       border-color: #FFD700 !important;
+    }
+
+    /* Kellonajat kultaisiksi */
+    .fc-timegrid-slot-label,
+    .fc-timegrid-axis-cushion {
+      color: #FFD700 !important;
     }
 
     /* Poistetaan linkkityyli */
@@ -108,7 +114,7 @@
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
 
-        /* 🔥 Kuukausi avautuu ensimmäisenä */
+        /* 🔥 Kuukausinäkymä avautuu ensimmäisenä */
         initialView: 'dayGridMonth',
 
         locale: 'fi',
