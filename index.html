@@ -28,6 +28,7 @@
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
+    /* Otsikko */
     .fc-toolbar-title {
       color: #FFD700 !important;
       font-size: 1.8em;
@@ -36,6 +37,7 @@
       letter-spacing: 1px;
     }
 
+    /* Napit */
     .fc-button {
       background-color: #FFD700 !important;
       border: none !important;
@@ -48,12 +50,14 @@
       background-color: #ffcc00 !important;
     }
 
+    /* Päivien otsikot */
     .fc-col-header-cell-cushion,
     .fc-daygrid-day-number {
       color: #FFD700 !important;
       font-weight: bold;
     }
 
+    /* Tapahtumalaatikot */
     .fc-event {
       background-color: #1a1a1a !important;
       border: 1px solid #FFD700 !important;
@@ -64,20 +68,27 @@
       padding: 4px;
     }
 
-    /* 🔥 PAKOTETAAN KAIKKI TEKSTIT KELTAISEKSI */
+    /* 🔥 PAKOTETAAN KAIKKI TEKSTIT JA RAJAT KULTAISEKSI */
     .fc-event,
-    .fc-event * {
+    .fc-event *,
+    .fc-daygrid-event,
+    .fc-daygrid-event *,
+    .fc-timegrid-event,
+    .fc-timegrid-event *,
+    .fc-timegrid-slot-label,
+    .fc-timegrid-axis-cushion,
+    .fc-col-header-cell-cushion,
+    .fc-daygrid-day-number,
+    .fc-toolbar-title,
+    .fc-button,
+    .fc-button *,
+    .fc-scrollgrid,
+    .fc-scrollgrid * {
       color: #FFD700 !important;
       border-color: #FFD700 !important;
     }
 
-    .fc-timegrid-slot-label,
-    .fc-timegrid-axis-cushion,
-    .fc-daygrid-event,
-    .fc-daygrid-event * {
-      color: #FFD700 !important;
-    }
-
+    /* Poistetaan linkkityyli */
     .fc-event a {
       color: #FFD700 !important;
       text-decoration: none !important;
