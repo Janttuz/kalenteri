@@ -28,7 +28,7 @@
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
-    /* Yläotsikko */
+    /* Otsikko */
     .fc-toolbar-title {
       color: #FFD700 !important;
       font-size: 1.8em;
@@ -57,7 +57,7 @@
       font-weight: bold;
     }
 
-    /* Tapahtumien laatikot */
+    /* Tapahtumalaatikot */
     .fc-event {
       background-color: #1a1a1a !important;
       border: 1px solid #FFD700 !important;
@@ -68,22 +68,28 @@
       padding: 4px;
     }
 
-    /* 🔥 KAIKKI TEKSTIT KELTAISEKSI KAIKISSA NÄKYMISSÄ */
-    .fc-event-title,
-    .fc-event-time,
-    .fc-event-main,
-    .fc-timegrid-slot-label,
-    .fc-timegrid-axis-cushion,
-    .fc-daygrid-event,
-    .fc-daygrid-event-dot {
+    /* 🔥 PAKOTETAAN KAIKKI TEKSTIT KELTAISEKSI */
+    .fc-event,
+    .fc-event * {
       color: #FFD700 !important;
       border-color: #FFD700 !important;
     }
 
-    /* Poistetaan FullCalendarin oletuslinkkityyli */
+    .fc-timegrid-slot-label,
+    .fc-timegrid-axis-cushion,
+    .fc-daygrid-event,
+    .fc-daygrid-event * {
+      color: #FFD700 !important;
+    }
+
+    /* Poistetaan linkkityyli */
     .fc-event a {
       color: #FFD700 !important;
       text-decoration: none !important;
+    }
+
+    .fc-scrollgrid {
+      background-color: #0d0d0d;
     }
   </style>
 </head>
@@ -113,7 +119,7 @@
           googleCalendarId: 'pitsapaku@gmail.com'
         },
 
-        /* 🔥 Näytetään vain aika + paikka */
+        /* 🔥 Näytetään aika + paikka (description → location fallback) */
         eventContent: function(arg) {
           let start = arg.event.start;
           let end = arg.event.end;
@@ -123,7 +129,10 @@
             ' - ' +
             end.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' });
 
-          let paikka = arg.event.extendedProps.location || '';
+          let paikka =
+            arg.event.extendedProps.description ||
+            arg.event.extendedProps.location ||
+            '';
 
           return {
             html: `<div style="white-space:normal;"><b>${aika}</b><br>${paikka}</div>`
