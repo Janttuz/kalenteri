@@ -9,6 +9,9 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/fi.js"></script>
 
+  <!-- 🔥 FullCalendar iCal plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@5.11.3/main.global.min.js"></script>
+
   <style>
     body {
       margin: 0;
@@ -62,8 +65,11 @@
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
 
-        // 🔥 Haetaan tapahtumat suoraan iCal-osoitteesta
-        events: 'https://calendar.google.com/calendar/ical/pitsapaku%40gmail.com/public/basic.ics'
+        // 🔥 Google iCal -tapahtumat
+        events: {
+          url: 'https://calendar.google.com/calendar/ical/pitsapaku%40gmail.com/public/basic.ics',
+          format: 'ics'
+        }
       });
 
       calendar.render();
