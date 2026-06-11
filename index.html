@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <title>Pitsapaku kalenteri</title>
+
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/main.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/daygrid.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/timegrid.min.css" rel="stylesheet" />
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/daygrid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/timegrid.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: #FFD700;
+      font-family: Arial, sans-serif;
+    }
+
+    #calendar {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: #000000;
+      border: 1px solid #FFD700;
+      padding: 10px;
+    }
+
+    .fc-theme-standard td, 
+    .fc-theme-standard th {
+      border-color: #444444;
+    }
+
+    .fc-toolbar-title {
+      color: #FFD700;
+    }
+
+    .fc-button {
+      background-color: #FFD700;
+      border: none;
+      color: #000000;
+    }
+
+    .fc-button:hover {
+      background-color: #ffcc00;
+    }
+
+    .fc-col-header-cell-cushion,
+    .fc-daygrid-day-number,
+    .fc-timegrid-slot-label,
+    .fc-timegrid-axis-cushion {
+      color: #FFD700;
+    }
+
+    .fc-event {
+      background-color: #000000 !important;
+      border: 1px solid #FFD700 !important;
+      color: #FFD700 !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="calendar"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'timeGridWeek',
+        locale: 'fi',
+        firstDay: 1,
+        slotMinTime: '08:00:00',
+        slotMaxTime: '23:00:00',
+        allDaySlot: false,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+
+        events: [
+          {
+            title: 'Pitsapaku – Varattu',
+            start: '2026-06-12T18:00:00',
+            end: '2026-06-12T21:00:00'
+          }
+        ]
+      });
+
+      calendar.render();
+    });
+  </script>
+</body>
+</html>
