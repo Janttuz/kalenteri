@@ -28,7 +28,7 @@
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
-    /* 🔥 Napolin kultainen tyyli + musta teksti valikoissa */
+    /* Otsikko mustalla tekstillä kultaisella taustalla */
     .fc-toolbar-title {
       color: #000000 !important;
       font-size: 1.8em;
@@ -40,6 +40,7 @@
       border-radius: 6px;
     }
 
+    /* Napit mustalla tekstillä kultaisella taustalla */
     .fc-button {
       background-color: #FFD700 !important;
       border: none !important;
@@ -53,20 +54,25 @@
       color: #000000 !important;
     }
 
-    /* Päivien otsikot kultaisella taustalla ja mustalla tekstillä */
+    /* Päivien otsikkopalkit kultaisella taustalla ja mustalla tekstillä */
     .fc-col-header-cell {
       background-color: #FFD700 !important;
       color: #000000 !important;
       font-weight: bold;
     }
 
-    .fc-col-header-cell-cushion,
-    .fc-daygrid-day-number {
+    .fc-col-header-cell-cushion {
       color: #000000 !important;
       font-weight: bold;
     }
 
-    /* Tapahtumalaatikot kultaisella tekstillä mustalla taustalla */
+    /* 🔥 Päivän numerot kultaisiksi (tämä korjaa ongelman) */
+    .fc-daygrid-day-number {
+      color: #FFD700 !important;
+      font-weight: bold;
+    }
+
+    /* Tapahtumat kultaisella tekstillä mustalla taustalla */
     .fc-event {
       background-color: #1a1a1a !important;
       border: 1px solid #FFD700 !important;
@@ -77,7 +83,7 @@
       padding: 4px;
     }
 
-    /* 🔥 Pakotetaan kultainen teksti tapahtumiin */
+    /* Pakotetaan kultainen teksti tapahtumiin */
     .fc-event,
     .fc-event *,
     .fc-daygrid-event,
@@ -114,7 +120,7 @@
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
 
-        /* 🔥 Kuukausinäkymä avautuu ensimmäisenä */
+        /* Kuukausi avautuu ensimmäisenä */
         initialView: 'dayGridMonth',
 
         locale: 'fi',
@@ -134,7 +140,7 @@
           googleCalendarId: 'pitsapaku@gmail.com'
         },
 
-        /* 🔥 Näytetään aika + paikka (description → location) */
+        /* Näytetään aika + paikka (description → location) */
         eventContent: function(arg) {
           let start = arg.event.start;
           let end = arg.event.end;
@@ -154,13 +160,13 @@
           };
         },
 
-        /* 🔥 Estetään klikkaus */
+        /* Estetään klikkaus */
         eventClick: function(info) {
           info.jsEvent.preventDefault();
           return false;
         },
 
-        /* 🔥 Poistetaan linkki DOM:ista */
+        /* Poistetaan linkki DOM:ista */
         eventDidMount: function(info) {
           let a = info.el.querySelector('a');
           if (a) {
